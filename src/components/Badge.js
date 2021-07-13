@@ -19,7 +19,7 @@ class Badge extends React.Component {
         </div>
         <div className="Badge__section-info">
           <p>Estudiante de Ingenieria</p>
-          <div>@anto9_berar5</div>
+          <div>Twitter @anto9_berar5</div>
         </div>
 
         <div className="Badge__footer">Platzi Conf</div>
