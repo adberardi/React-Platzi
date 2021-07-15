@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
-import Badge from "./components/Badge";
+import BadgeNew from "./pages/BadgeNew";
 // import './index.css';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
@@ -10,11 +10,7 @@ import Badge from "./components/Badge";
 const container = document.getElementById("root");
 
 ReactDOM.render(
-  <Badge
-    firstName="Antonio"
-    lastName="Berardi"
-    biography="Estudiante de Ingenieria en UCAB sede Caracas"
-    twitter="anto9_berar5"
+  <BadgeNew
   />,
   container
 );
