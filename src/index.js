@@ -5,13 +5,13 @@ import "./global.css";
 import BadgeNew from "./pages/BadgeNew";
 import Badges from "./pages/Badges";
 // import './index.css';
-// import App from './App';
+import App from './components/App';
 // import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById("root");
 
 ReactDOM.render(
-  <Badges
+  <App
   />,
   container
 );
