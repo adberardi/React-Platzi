@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
 import BadgeNew from "./pages/BadgeNew";
+import Badges from "./pages/Badges";
 // import './index.css';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
@@ -10,7 +11,7 @@ import BadgeNew from "./pages/BadgeNew";
 const container = document.getElementById("root");
 
 ReactDOM.render(
-  <BadgeNew
+  <Badges
   />,
   container
 );
