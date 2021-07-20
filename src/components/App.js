@@ -14,8 +14,8 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/badges" component={Badges} />
           <Route exact path="/badges/new" component={BadgeNew} />
-          <Route exact path="/404" component={NotFound} />
-          <Redirect from="*" to="/404" />
+{/*           <Route exact path="/404" component={NotFound} />
+          <Redirect from="*" to="/404" /> */}
         </Layout>
       </Switch>
     </BrowserRouter>
