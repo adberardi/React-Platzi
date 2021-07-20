@@ -1,5 +1,5 @@
 import React from "react";
-import Background from  "./styles/404_background.svg";
+import Background from  "../images/404_background.svg";
 import "./styles/NotFound.css";
 
 function NotFound() {
