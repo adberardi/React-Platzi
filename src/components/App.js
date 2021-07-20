@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Layout from "./Layout";
 import Badges from "../pages/Badges";
 import BadgeNew from "../pages/BadgeNew";
@@ -14,7 +14,8 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/badges" component={Badges} />
           <Route exact path="/badges/new" component={BadgeNew} />
-          <Route component={NotFound} />
+          <Route exact path="/404" component={NotFound} />
+          <Redirect from="*" to="/404" />
         </Layout>
       </Switch>
     </BrowserRouter>
