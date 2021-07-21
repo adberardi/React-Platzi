@@ -1,6 +1,5 @@
 import React from "react";
-import "./styles/BadgeNew.css";
-import Navbar from "../components/Navbar";
+import "./styles/BadgeEdit.css";
 import header from "../images/platziconf-logo.svg";
 import Badge from "../components/Badge.js";
 import BadgeForm from "../components/BadgeForm";
@@ -8,7 +7,7 @@ import profile from "../images/profile.jpg";
 import api from "../api";
 import PageLoading from "../components/PageLoading";
 
-class BadgeNew extends React.Component {
+class BadgeEdit extends React.Component {
   state = {
     loading: false,
     error: null,
@@ -17,11 +16,11 @@ class BadgeNew extends React.Component {
 
   handleChange = (evento) => {
     /*  //Primera forma de almacenar los datos en state.   
-    const nextForm = this.state.form;
-    nextForm[evento.targe.name] = evento.target.value;
-    this.setState({
-      form: nextForm
-    }); */
+      const nextForm = this.state.form;
+      nextForm[evento.targe.name] = evento.target.value;
+      this.setState({
+        form: nextForm
+      }); */
 
     //Segunda forma de almacenar los datos en state.
     this.setState({
@@ -39,7 +38,7 @@ class BadgeNew extends React.Component {
       error: null,
     });
     try {
-      await api.badges.create(this.state.form);
+      await api.badges.update(this.props.match.params.badgeId, this.state.form);
       this.setState({
         loading: false,
       });
@@ -54,15 +53,40 @@ class BadgeNew extends React.Component {
     }
   };
 
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    this.setState({
+      loading: true,
+      error: null,
+    });
+
+    try {
+      const data = await api.badges.read(this.props.match.params.badgeId);
+
+      this.setState({
+        loading: false,
+        form: data,
+      });
+    } catch (error) {
+      this.setState({
+        loading: false,
+        error: error,
+      });
+    }
+  };
+
   render() {
     if (this.state.loading) {
       return <PageLoading />;
     }
     return (
       <React.Fragment>
-        <div className="BadgeNew__hero">
+        <div className="BadgeEdit__hero">
           <img
-            className="BadgeNew__hero-image img-fluid"
+            className="BadgeEdit__hero-image img-fluid"
             src={header}
             alt="Logo"
           />
@@ -79,7 +103,7 @@ class BadgeNew extends React.Component {
               />
             </div>
             <div className="col-6">
-              <h1>Registre sus Datos</h1>
+              <h1>Actualice sus Datos</h1>
               <BadgeForm
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
@@ -94,4 +118,4 @@ class BadgeNew extends React.Component {
   }
 }
 
-export default BadgeNew;
+export default BadgeEdit;

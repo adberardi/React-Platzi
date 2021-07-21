@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Gravatar from "./Gravatar";
 import "./styles/BadgesList.css";
 
-
-
 class BadgesListItem extends React.Component {
   render() {
     return (
@@ -12,7 +10,7 @@ class BadgesListItem extends React.Component {
         <Gravatar
           className="BadgesListItem__avatar"
           email={this.props.badge.email}
-          alt={ `${this.props.badge.firstName} ${this.props.badge.lastName}`}
+          alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
         />
 
         <div>
@@ -31,26 +29,30 @@ class BadgesListItem extends React.Component {
 class BadgesList extends React.Component {
   render() {
     if (this.props.badges.length === 0) {
-      return(
+      return (
         <div>
           <h3>No badges were found</h3>
-          <Link className="btn btn-primary" to="/badges/new" > Create New badge </Link>
+          <Link className="btn btn-primary" to="/badges/new">
+            {" "}
+            Create New badge{" "}
+          </Link>
         </div>
       );
     }
     return (
       <div className="BadgeList">
-      <ul className="list-unstyled">
-        {this.props.badges.map((badge) => {
-          return (
-            <li key={badge.id}>
-              <BadgesListItem badge={badge} />
-            </li>
-          );
-        })}
-      </ul>
+        <ul className="list-unstyled">
+          {this.props.badges.map((badge) => {
+            return (
+              <li key={badge.id}>
+                <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`}>
+                  <BadgesListItem badge={badge} />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-
     );
   }
 }
