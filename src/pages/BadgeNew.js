@@ -6,9 +6,12 @@ import Badge from "../components/Badge.js";
 import BadgeForm from "../components/BadgeForm";
 import profile from "../images/profile.jpg";
 import api from "../api";
+import PageLoading from "../components/PageLoading";
 
 class BadgeNew extends React.Component {
   state = {
+    loading: false,
+    error: null,
     form: { firstName: "", lastName: "", email: "", jobTitle: "", twitter: "" },
   };
 
@@ -38,8 +41,11 @@ class BadgeNew extends React.Component {
     try {
       await api.badges.create(this.state.form);
       this.setState({
-        loading: false
+        loading: false,
       });
+
+      // Redirige al usuario a badges.
+      this.props.history.push('/badges');
     } catch (error) {
       this.setState({
         loading: false,
@@ -49,6 +55,9 @@ class BadgeNew extends React.Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return <PageLoading />;
+    }
     return (
       <React.Fragment>
         <div className="BadgeNew__hero">
@@ -74,6 +83,7 @@ class BadgeNew extends React.Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 formValue={this.state.form}
+                error={this.state.error}
               />
             </div>
           </div>
