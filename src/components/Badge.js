@@ -1,5 +1,6 @@
 import React from "react";
 import confLogo from "../images/badge-header.svg";
+import Gravatar from "./Gravatar";
 import "./styles/Badge.css"; //se esta trayendo el .css pero no se asigna a ninguna variable.
 
 class Badge extends React.Component {
@@ -10,7 +11,10 @@ class Badge extends React.Component {
           <img src={confLogo} alt="Logo Conferencia" />
         </div>
         <div className="Badge__section-name">
-          <img className="Badge__avatar" src={this.props.avatar} alt="Avatar" />
+          <Gravatar
+          className="Badge__avatar"
+          email={this.props.email} 
+          />
           <h1>
             {this.props.firstName}
             <br />

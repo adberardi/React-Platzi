@@ -8,7 +8,7 @@ import PageLoading from "../components/PageLoading";
 import PageError from "../components/PageError";
 
 class Badges extends React.Component {
-/*   state = {
+  /*   state = {
     data: [
       {
         id: "2de30c42-9deb-40fc-a41f-05e62b5939a7",
@@ -43,30 +43,29 @@ class Badges extends React.Component {
     ],
   }; */
 
-state = {
-  loading: true,
-  error: null,
-  data: undefined
-};
-
-
-componentDidMount(){
-  this.fetchData();
-}
-
-fetchData = async () => {
-  this.setState({
+  state = {
     loading: true,
-    error: null
-  });
+    error: null,
+    data: undefined,
+  };
 
-  try {
-    const data = await api.badges.list();
-    this.setState({ loading: false, data: data});
-  } catch (error) {
-    this.setState({loading: false, error: error});
+  componentDidMount() {
+    this.fetchData();
   }
-}
+
+  fetchData = async () => {
+    this.setState({
+      loading: true,
+      error: null,
+    });
+
+    try {
+      const data = await api.badges.list();
+      this.setState({ loading: false, data: data });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
 
   render() {
     if (this.state.loading) {
