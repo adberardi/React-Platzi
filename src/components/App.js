@@ -6,6 +6,7 @@ import BadgeNew from "../pages/BadgeNew";
 import BadgeEdit from "../pages/BadgeEdit";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
+import BadgeDetails from '../pages/BadgeDetails';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/badges" component={Badges} />
           <Route exact path="/badges/new" component={BadgeNew} />
+          <Route exact path="/badges/:badgeId" component={BadgeDetails} />
           <Route exact path="/badges/:badgeId/edit" component={BadgeEdit} />
           {/* <Route component={NotFound}/> */}
 {/*           <Route exact path="/404" component={NotFound} />
