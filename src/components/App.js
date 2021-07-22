@@ -6,7 +6,7 @@ import BadgeNew from "../pages/BadgeNew";
 import BadgeEdit from "../pages/BadgeEdit";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
-import BadgeDetails from '../pages/BadgeDetails';
+import BadgeDetails from '../pages/BadgeDetailsContainer';
 
 function App() {
   return (
