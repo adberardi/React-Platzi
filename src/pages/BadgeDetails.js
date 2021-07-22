@@ -3,7 +3,7 @@ import "./styles/BadgeDetails.css";
 import confLogo from "../images/platziconf-logo.svg";
 import Badge from "../components/Badge";
 import { Link } from "react-router-dom";
-import ReactDOM from "react-dom";
+import Modal from '../components/Modal';
 
 function BadgeDetails(props) {
   const badge = props.badge;
@@ -17,7 +17,7 @@ function BadgeDetails(props) {
             </div>
             <div className="col-6 BadgeDetails__hero-attendant-name">
               <h1>
-                {badge.firstName} {badge.lastName}{" "}
+                {badge.firstName} {badge.lastName}
               </h1>
             </div>
           </div>
@@ -45,11 +45,10 @@ function BadgeDetails(props) {
               </Link>
             </div>
             <div>
-              <button className="btn btn-danger"> Cancelar</button>
-              {ReactDOM.createPortal(
-                <h1>Hola! Realmente no estoy aqui</h1>,
-                document.getElementById("modal")
-              )}
+              <button className="btn btn-danger" onClick={props.onOpenModal}> Cancelar</button>
+              <Modal  isOpen={props.modalIsOpen} onClose={props.onCloseModal} >
+                Lopemp Ipsun
+              </Modal>
             </div>
           </div>
         </div>

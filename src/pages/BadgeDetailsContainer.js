@@ -4,12 +4,12 @@ import PageLoading from "../components/PageLoading";
 import PageError from "../components/PageError";
 import BadgeDetails from "./BadgeDetails";
 
-
 class BadgeDetailsContainer extends React.Component {
   state = {
     loading: true,
     error: null,
     data: undefined,
+    modalIsOpen: false,
   };
 
   componentDidMount() {
@@ -36,6 +36,14 @@ class BadgeDetailsContainer extends React.Component {
     }
   };
 
+  handleOpenModal = (e) => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  handleCloseModal = (e) => {
+    this.setState({ modalIsOpen: false });
+  };
+
   render() {
     if (this.state.loading) {
       return <PageLoading />;
@@ -45,7 +53,12 @@ class BadgeDetailsContainer extends React.Component {
     }
 
     return (
-      <BadgeDetails badge = {this.state.data}/>
+      <BadgeDetails
+        modalIsOpen={this.state.modalIsOpen}
+        onOpenModal={this.handleOpenModal}
+        onCloseModal={this.handleCloseModal}
+        badge={this.state.data}
+      />
     );
   }
 }
